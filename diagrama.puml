@@ -1,0 +1,52 @@
+@startuml
+
+title Diagrama de clases - Ejercicio Intro POO
+
+class Alumno {
+    - nombre : String
+    - apellido : String
+    - numeroMatricula : String
+    - carrera : String
+    - correo : String
+
+    + Alumno()
+    + Alumno(nombre : String, apellido : String, numeroMatricula : String, carrera : String, correo : String)
+    + getNombre() : String
+    + setNombre(nombre : String) : void
+    + getApellido() : String
+    + setApellido(apellido : String) : void
+    + getNumeroMatricula() : String
+    + getCarrera() : String
+    + setCarrera(carrera : String) : void
+    + getCorreo() : String
+    + setCorreo(correo : String) : void
+    + toString() : String
+}
+
+class Curso {
+    - nombre : String
+    - codigo : String
+    - alumnos : ArrayList<Alumno>
+
+    + Curso()
+    + Curso(nombre : String, codigo : String)
+    + getNombre() : String
+    + setNombre(nombre : String) : void
+    + getCodigo() : String
+    + setCodigo(codigo : String) : void
+    + getAlumnos() : ArrayList<Alumno>
+    + agregarAlumno(alumno : Alumno) : boolean
+    + eliminarAlumno(numeroMatricula : String) : boolean
+    + perteneceAlumno(numeroMatricula : String) : boolean
+    + toString() : String
+}
+
+class Main {
+    + main(args : String[]) : void
+}
+
+Curso "1" o-- "0..*" Alumno : contiene
+Main ..> Curso : instancia
+Main ..> Alumno : instancia
+
+@enduml
